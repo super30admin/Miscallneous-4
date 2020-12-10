@@ -1,4 +1,4 @@
-# Miscallneous-4
+# Misc-4
 
 ## Problem - 1 Online Election (https://leetcode.com/problems/online-election/)
 
