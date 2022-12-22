@@ -1,0 +1,30 @@
+//TimeComplexity.  O(n)
+//SpaceComplexity  O(n)
+
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+
+        Stack<Integer> st = new Stack<>();
+
+        st.push(-1);
+        int max = 0;
+        int i = 0;
+
+        for(i = 0 ; i < heights.length; i++){
+
+            while(st.peek() != -1 && (heights[st.peek()] > heights[i])){
+            int j =  st.pop();
+              max = Math.max(max,heights[j] *( i - st.peek()-1));
+            }         
+               st.push(i);
+        }
+
+        while(st.peek() != -1){
+
+        int j = st.pop();
+        max = Math.max(max,heights[j] *(i - st.peek()-1));
+        }
+       
+        return max;
+    }
+}
