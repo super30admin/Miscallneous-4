@@ -1,0 +1,25 @@
+T.c --> O(n)
+S.c --> O(n)
+
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        Stack<Integer> st = new Stack<>();
+        int i =0;
+        st.push(-1);
+        int max = 0;
+        while(i < heights.length){
+          if(st.peek() == -1 || heights[st.peek()] <= heights[i]){
+             st.push(i);
+             i++;
+          }else{
+            int pop = st.pop();
+            max = Math.max(max,heights[pop]*(i-st.peek()-1));
+          }
+        } 
+        while(st.size()>1){
+            int pop = st.pop();
+            max = Math.max(max,heights[pop]*(i-st.peek()-1));
+        }
+        return max;
+    }
+}
